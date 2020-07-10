@@ -6,12 +6,27 @@
 //
 
 import SwiftUI
+import Backend
 
 @main
 struct RedditOsApp: App {
+    
+    @SceneBuilder
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                Sidebar()
+                Text("Select a post")
+                    .frame(minWidth: 250,
+                           maxWidth: .infinity,
+                           maxHeight: .infinity)
+            }
+            .frame(minHeight: 400)
+            .environmentObject(PersistedContent())
+        }
+        
+        Settings {
+            Text("Hello world")
         }
     }
 }
